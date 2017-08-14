@@ -20,12 +20,12 @@ layout: "layout"
       h4 我是 h4
       h5 我是 h5
       h6 我是 h6
-      p 
+      p
         a href="#" 我是 link
         br
         img src= lorem.image('300x400', :random_color => true)
 .footer
   = partial "partials/footer"
-  
+
 - content_for :page_javascript do
    = javascript_include_tag "main.js"

@@ -89,18 +89,6 @@
 // .row
 // components → row.scss
 
-// Grid //
-// .grid 裡面才有用
-
-.col-xs-1 {
-  @include span(1);
-}
-.col-xs-2 {
-  @include span(2); 
-}
-.col-xs-3 {
-  @include span(3);
-}
 .col-xs-4 {
   // @include span(4);
   width: 100%;

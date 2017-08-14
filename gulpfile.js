@@ -3,7 +3,7 @@
 // 載入外掛
 // ========================================================
 
-var gulp = require('gulp'),  
+var gulp = require('gulp'),
     sass = require('gulp-sass'),
     sourcemaps = require('gulp-sourcemaps'),
     postcss = require('gulp-postcss'),
@@ -11,7 +11,6 @@ var gulp = require('gulp'),
     uglify = require('gulp-uglify'),
     imagemin = require('gulp-imagemin'),
     rename = require('gulp-rename'),
-    concat = require('gulp-concat'),
     notify = require('gulp-notify'),
     cache = require('gulp-cache'),
     hologram = require('gulp-hologram');
@@ -29,19 +28,20 @@ var gulp = require('gulp'),
 
 
 // CSS
-gulp.task('styles', function() { 
+gulp.task('styles', function() {
   return gulp.src('source/sass/**/*.scss')
-      .pipe(sourcemaps.init())
-      .pipe(sass().on('error', sass.logError))
-      .pipe(postcss([require('autoprefixer')({ browsers: ['last 2 versions'] })]))
-      .pipe(sourcemaps.write())
-      .pipe(gulp.dest('source/assets/styles'))
-      .pipe(notify({ message: 'Styles task complete' }))
-      .pipe(livereload({ start: true }));
+    .pipe(sourcemaps.init())
+    .pipe(sass({
+        includePaths: ['node_modules/susy/sass']
+    }).on('error', sass.logError))
+    .pipe(postcss([require('autoprefixer')({ browsers: ['last 2 versions'] })]))
+    .pipe(gulp.dest('source/assets/styles'))
+    .pipe(notify({ message: 'Styles task complete' }))
+    .pipe(livereload({ start: true }));
 });
 
 // JS
-gulp.task('scripts', function() {  
+gulp.task('scripts', function() {
   return gulp.src('source/javascript/**/*.js')
     .pipe(uglify())
     // .pipe(rename({suffix: '.min'}))
@@ -51,7 +51,7 @@ gulp.task('scripts', function() {
 });
 
 // IMG
-gulp.task('images', function() {  
+gulp.task('images', function() {
   return gulp.src('source/images/**/*')
     .pipe(imagemin({ optimizationLevel: 3, progressive: true, interlaced: true }))
     .pipe(gulp.dest('source/assets/images'))
@@ -61,14 +61,14 @@ gulp.task('images', function() {
 
 
 // HTML
-gulp.task('html', function() {  
+gulp.task('html', function() {
   return gulp.src('source/**/*.slim')
     .pipe(notify({ message: 'Html task complete' }))
     .pipe(livereload({ start: true }));
 });
 
 
-// hologram
+// hologram - default
 gulp.task('hologram', function() {
     gulp.src('hologram_config.yml')
       .pipe(hologram())
@@ -117,6 +117,7 @@ gulp.task('watch', function() {
 
   // Watch .scss files
   gulp.watch('source/sass/**/*', ['styles','hologram']);
+  gulp.watch('source/sass/**/*', ['styles']);
 
   // Watch .js files
   gulp.watch('source/javascript/**/*', ['scripts']);
@@ -138,13 +139,13 @@ gulp.task('watch', function() {
 // ========================================================
 
 // Gulp default 工作
-// gulp.task('default',['watch'],  function() {  
+// gulp.task('default',['watch'],  function() {
 //    gulp.start('styles', 'scripts' , 'images', 'html');
 // });
 
 
 // Gulp default 工作 browserSync Ver.
-gulp.task('default',['watch'],  function() {  
+gulp.task('default',['watch'],  function() {
    gulp.start('styles', 'scripts' , 'images', 'html', 'hologram');
 });
 

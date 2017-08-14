@@ -10,36 +10,21 @@
 //   Import framework
 // -------------------------------------
 
-// ----- sass-mq ----- //
-
-@import "bower_components/sass-mq/mq";
-
-// ----- Susy ----- //
-
-@import "bower_components/susy/sass/susy";
-
 // @import 'breakpoint';
 // susy 1 專案使用
 // @import "susyone";
-
-// ----- Compass ----- //
-
-// @import "h5bp"; // compass extension
-// @import "compass/css3";
-// @import "compass/typography/links";
-// @import "compass/typography/lists";
-// @import "compass/utilities/general/clearfix";
+@import "susy";
 
 // ----- inuit ----- //
 
-// @import "bower_components/inuit-defaults/settings.defaults";
-// @import "bower_components/inuit-list-inline/objects.list-inline";
-// @import "bower_components/inuit-list-bare/objects.list-bare";
+// @import "../node_modules/inuit-defaults/settings.defaults";
+// @import "../node_modules/inuit-list-inline/objects.list-inline";
+// @import "../node_modules/inuit-list-bare/objects.list-bare";
 
 // ----- Scut ----- //
 // https://davidtheclark.github.io/scut/index.html
 
-@import "bower_components/Scut/dist/scut";
+@import "./node_modules/scut/dist/scut";
 
 // -------------------------------------
 //   Core / Foundation
@@ -90,7 +75,7 @@
 
 //  Grid //
 @import "components/grid";
-@import "components/bootstrap-grid";
+// @import "components/bootstrap-grid";
 
 // Title //
 @import "components/title";
@@ -193,3 +178,4 @@
 // -------------------------------------
 //   Inbox
 // -------------------------------------
+

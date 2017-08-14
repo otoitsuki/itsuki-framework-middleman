@@ -144,10 +144,11 @@ input[type="color"] {
   border: 0;
   border-radius: 6px;
   // for ios mobile system, convert onclick to touch
-  @include susy-media(0 1024px) {
+  @media (max-width: 1024px) {
     cursor: pointer;
   }
 }
+
 
 select {
   height: 2.5em; // select 的高沒辦法靠padding和fontsize去撐，只能用height

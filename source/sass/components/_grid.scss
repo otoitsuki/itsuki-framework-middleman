@@ -79,7 +79,7 @@ $susy: (
 //   Grid
 // -------------------------------------
 .grid {
-  @include container;
+  // @include container;
   // @include border-box-sizing;
 
   // 留白隨比例變化↓
@@ -87,7 +87,7 @@ $susy: (
   // margin-right: gutter();
 
   // 留白固定不隨比例變化↓
-  margin : auto $standard-gutter*2;
+  // margin : auto $standard-gutter*2;
 }
 
 // --- 主要頁面區塊 --- //
