@@ -1,8 +1,9 @@
-require 'slim'
+# View Middleman configurations:
+# http://localhost:4567/__middleman/config/
 
-###
-# Page options, layouts, aliases and proxies
-###
+# require "helpers/view_helpers.rb"
+# helpers ViewHelpers
+
 
 # Configure assets directories
 # ----------------------------------------------
@@ -12,38 +13,79 @@ set :images_dir, 'assets/images'
 set :fonts_dir, 'assets/fonts'
 set :partials_dir, 'partials/'
 
-# With alternative layout
-# page "/path/to/file.html", layout: :otherlayout
 
-# Proxy pages (http://middlemanapp.com/basics/dynamic-pages/)
-# proxy "/this-page-has-no-template.html", "/template-file.html", locals: {
-#  which_fake_page: "Rendering a fake page with a local variable" }
+# Slim HTML
+# ----------------------------------------------
+require 'slim'
 
-# General configuration
+# i18n
+# ----------------------------------------------
+# activate :i18n, :mount_at_root => :'zh-tw'
 
-###
-# Helpers
-###
+# JP lorem
+# FROM https://github.com/tanalab2/middleman-ya_lorem_ja
+# ----------------------------------------------
+# activate :ya_lorem_ja
 
-# Methods defined in the helpers block are available in templates
-# helpers do
-#   def some_helper
-#     "Helping"
-#   end
-# end
+# Development-specific configuration
+# ----------------------------------------------
+configure :development do
+
+  # activate :directory_indexes
+
+  set :debug_assets, true
+
+  # Output a pretty html
+  ::Slim::Engine.set_options :pretty => true
+
+end
+
 
 # Build-specific configuration
+# ----------------------------------------------
 configure :build do
+
+  # compass_config do |config|
+  #   config.output_style = :compressed
+  #   config.line_comments = false
+  # end
+
+  # Output a pretty html
+  ::Slim::Engine.set_options :pretty => true
+  
+  # Use relative URLs
+  # activate :directory_indexes
+  activate :relative_assets
+  
+  # Activate gzip
+  # activate :gzip
+
   # Minify CSS on build
-  # activate :minify_css
+  activate :minify_css
 
   # Minify Javascript on build
   # activate :minify_javascript
-end
 
-# Helpers
-# require "helpers/tools"
-# helpers Tools
+  # Add asset fingerprinting to avoid cache issues
+  # activate :asset_hash
+
+  # Enable cache buster
+  # activate :cache_buster
+
+  # Activate autoprefixer
+  # activate :autoprefixer do |config|
+  # config.browsers = ['last 4 versions', 'Explorer >= 9']
+  # end
+
+  # ignore file
+  ignore "sass/*"
+  ignore "images/*"
+  ignore "javascript/*"
+  ignore "archive/*"
+  ignore "*.yml"
+  
+
+end
 
 activate :external_pipeline,
   name: :gulp,

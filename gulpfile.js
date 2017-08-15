@@ -62,7 +62,7 @@ gulp.task('images', function() {
 
 // HTML
 gulp.task('html', function() {
-  return gulp.src('source/**/*.slim')
+  return gulp.src('source/**/*.html.*')
     .pipe(notify({ message: 'Html task complete' }))
     .pipe(livereload({ start: true }));
 });
@@ -105,7 +105,7 @@ gulp.task('serve', function () {
     // Watch image files
     gulp.watch('source/images/**/*', ['img-watch']);
   // Watch html files
-  gulp.watch('source/**/*.slim', ['html-watch']);
+  gulp.watch('source/**/*.html.*', ['html-watch']);
 });
 
 
@@ -126,7 +126,7 @@ gulp.task('watch', function() {
   gulp.watch('source/images/**/*', ['images']);
 
   // Watch slim files
-  gulp.watch('source/**/*.slim', ['html']);
+  gulp.watch('source/**/*.html.*', ['html']);
 
   // Create LiveReload server
   livereload.listen();

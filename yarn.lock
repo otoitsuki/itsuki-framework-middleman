@@ -3728,7 +3728,7 @@ node-sass-utils@^1.1.2:
   version "1.1.2"
   resolved "https://registry.yarnpkg.com/node-sass-utils/-/node-sass-utils-1.1.2.tgz#d03639cfa4fc962398ba3648ab466f0db7cc2131"
 
-node-sass@^3.4.2:
+node-sass@^3.13.1, node-sass@^3.4.2:
   version "3.13.1"
   resolved "https://registry.yarnpkg.com/node-sass/-/node-sass-3.13.1.tgz#7240fbbff2396304b4223527ed3020589c004fc2"
   dependencies:
